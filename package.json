@@ -1,0 +1,30 @@
+{
+    "name": "geotrendbot",
+    "version": "1.0.0",
+    "description": "View trends on twitter on a map. Mention (@) geotrendbot on Twitter with a hashtag and get a link of a map with hotspot analysis of tweets that contain the hashtag. ",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Lucas-Kohorst/GeoTrendBot.git"
+    },
+    "keywords": [
+        "twitter-bot"
+    ],
+    "author": "Lucas Kohorst",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Lucas-Kohorst/GeoTrendBot/issues"
+    },
+    "homepage": "https://github.com/Lucas-Kohorst/GeoTrendBot#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "opencage-api-client": "^0.5.0",
+        "scrape-twitter": "^0.11.1",
+        "stream-to-promise": "^2.2.0",
+        "twitter": "^1.7.1"
+    }
+}
