@@ -27,56 +27,23 @@ function mentions() {
  * Searches the given hashtag and returns results
  * with the Twitter API
  */
-function search(hashtag) {
+function search(hashtag, date) {
     return new Promise((resolve, reject) => {
         var params = {
             q: hashtag,
             count: 100,
-            result_type: "recent"
+            result_type: "recent",
+            until: date
         };
         client.get("search/tweets", params, function(error, tweets, response) {
             if (!error) {
                 resolve(tweets);
             } else {
-                reject(error)
+                reject(error);
             }
         });
-    })
+    });
 }
-
-// /**
-//  * Searches the given hashtag and returns results
-//  * with twitter scrapers
-//  * tops out at 40 and doesn't always work
-//  */
-// function search(hashtag) {
-//     return new Promise((resolve, reject) => {
-//         scrapeTwitter
-//             .TweetStream('teamtrees', "latest", {
-//                 count: 10
-//             })
-//         console.log("Hello")
-//     });
-// }
-
-/**
- * Gets the user using twitters API
- */
-// function user(name) {
-//     var params = {
-//         q: name,
-//         count: 1
-//     };
-//     return new Promise((resolve, reject) => {
-//         client.get("users/search", params, function(error, user, response) {
-//             if (!error) {
-//                 resolve(user);
-//             } else {
-//                 reject(error)
-//             }
-//         });
-//     })
-// }
 
 /**
  * Gets the user using twitter-scraper

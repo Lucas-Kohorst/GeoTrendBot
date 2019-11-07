@@ -1,30 +1,43 @@
 {
-    "name": "geotrendbot",
-    "version": "1.0.0",
-    "description": "View trends on twitter on a map. Mention (@) geotrendbot on Twitter with a hashtag and get a link of a map with hotspot analysis of tweets that contain the hashtag. ",
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Lucas-Kohorst/GeoTrendBot.git"
-    },
-    "keywords": [
-        "twitter-bot"
-    ],
-    "author": "Lucas Kohorst",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Lucas-Kohorst/GeoTrendBot/issues"
-    },
-    "homepage": "https://github.com/Lucas-Kohorst/GeoTrendBot#readme",
+    "name": "GeoTrendBot",
+    "version": "0.1.0",
+    "private": true,
     "dependencies": {
-        "express": "^4.17.1",
+        "geo-tools": "^0.1.2",
+        "geocode": "0.0.3",
+        "leaflet": "^1.5.1",
+        "merge": "^1.2.1",
+        "moment": "^2.24.0",
         "opencage-api-client": "^0.5.0",
+        "react": "^16.11.0",
+        "react-dom": "^16.11.0",
+        "react-geocode": "^0.2.1",
+        "react-leaflet": "^2.5.0",
+        "react-scripts": "3.2.0",
         "scrape-twitter": "^0.11.1",
-        "stream-to-promise": "^2.2.0",
+        "timesolver": "^1.2.0",
         "twitter": "^1.7.1"
-    }
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "proxy": "http://localhost:5000/"
 }
