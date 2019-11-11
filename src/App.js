@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Router>
         <Route path="/:hashtag" component={MapElement}></Route>
-        <Route path="/">
+        <Route exact path="/">
           <Home />
         </Route>
       </Router>

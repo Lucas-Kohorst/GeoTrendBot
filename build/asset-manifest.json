@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/GeoTrendBot/static/css/main.a952db0f.chunk.css",
+    "main.js": "/GeoTrendBot/static/js/main.fa8a841e.chunk.js",
+    "main.js.map": "/GeoTrendBot/static/js/main.fa8a841e.chunk.js.map",
+    "runtime-main.js": "/GeoTrendBot/static/js/runtime-main.37fa0d74.js",
+    "runtime-main.js.map": "/GeoTrendBot/static/js/runtime-main.37fa0d74.js.map",
+    "static/css/2.223d6865.chunk.css": "/GeoTrendBot/static/css/2.223d6865.chunk.css",
+    "static/js/2.eadc0eee.chunk.js": "/GeoTrendBot/static/js/2.eadc0eee.chunk.js",
+    "static/js/2.eadc0eee.chunk.js.map": "/GeoTrendBot/static/js/2.eadc0eee.chunk.js.map",
+    "index.html": "/GeoTrendBot/index.html",
+    "precache-manifest.2450a66fbe8c87bd2dbb277261257067.js": "/GeoTrendBot/precache-manifest.2450a66fbe8c87bd2dbb277261257067.js",
+    "service-worker.js": "/GeoTrendBot/service-worker.js",
+    "static/css/2.223d6865.chunk.css.map": "/GeoTrendBot/static/css/2.223d6865.chunk.css.map",
+    "static/css/main.a952db0f.chunk.css.map": "/GeoTrendBot/static/css/main.a952db0f.chunk.css.map",
+    "static/media/logo.svg": "/GeoTrendBot/static/media/logo.25bf045c.svg",
+    "static/media/map.png": "/GeoTrendBot/static/media/map.562ff858.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.37fa0d74.js",
+    "static/css/2.223d6865.chunk.css",
+    "static/js/2.eadc0eee.chunk.js",
+    "static/css/main.a952db0f.chunk.css",
+    "static/js/main.fa8a841e.chunk.js"
+  ]
+}

@@ -47,7 +47,7 @@ class MapElement extends React.Component {
           )
             .then(response => {
               if (!response.ok) {
-                throw new Error("Network response was not ok.");
+                throw new Error("Network Response Error");
               }
               return response.json();
             })

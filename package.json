@@ -2,10 +2,38 @@
     "name": "GeoTrendBot",
     "version": "0.1.0",
     "private": true,
+    "description": "View trends on twitter on a map. Mention (@) geotrendbot on Twitter with a hashtag and get a link of a map with hotspot analysis of tweets that contain the hashtag. ",
+    "homepage": "https://lucas-kohorst.github.io/GeoTrendBot",
+    "engines": {
+        "node": "12.13.0",
+        "npm": "6.x"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Lucas-Kohorst/GeoTrendBot"
+    },
+    "keywords": [
+        "gis",
+        "twitter-bot",
+        "react",
+        "trends"
+    ],
+    "author": {
+        "name": "Lucas Kohorst",
+        "email": "kohorstlucas@gmail.com",
+        "url": "kohorstlucas.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Lucas-Kohorst/GeoTrendBot/issues"
+    },
+    "readme": "https://github.com/Lucas-Kohorst/GeoTrendBot#readme",
     "dependencies": {
+        "babel-polyfill": "^6.26.0",
         "fork-me-on-github": "^1.0.6",
         "geo-tools": "^0.1.2",
         "geocode": "0.0.3",
+        "gh-pages": "^2.1.1",
         "leaflet": "^1.5.1",
         "merge": "^1.2.1",
         "moment": "^2.24.0",
@@ -14,6 +42,7 @@
         "react-dom": "^16.11.0",
         "react-geocode": "^0.2.1",
         "react-icons": "^3.8.0",
+        "react-iframe": "^1.8.0",
         "react-leaflet": "^2.5.0",
         "react-leaflet-dialog": "^2.0.1",
         "react-leaflet-div-icon": "^1.1.0",
@@ -30,13 +59,15 @@
         "react-twitter-embed": "^3.0.3",
         "scrape-twitter": "^0.11.1",
         "timesolver": "^1.2.0",
-        "twitter": "^1.7.1"
+        "twitter": "^1.7.1",
+        "yarn": "^1.19.1"
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "heroku-postbuild": "npm install --only=dev && npm install && npm run build"
     },
     "eslintConfig": {
         "extends": "react-app"

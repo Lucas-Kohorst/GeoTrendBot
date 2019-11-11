@@ -12,7 +12,7 @@ app.get("/user/:name", function(req, res) {
     });
 });
 
-app.get("/search/:hashtag/:date?", function(req, res) {
+app.get("/search/:hashtag/", function(req, res) {
     console.log(new Date() + " [REQUEST] Search: " + req.params.hashtag);
     var date = new Date();
     var promises = [];

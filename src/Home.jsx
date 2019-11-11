@@ -11,9 +11,9 @@ import "./App.css";
 class Home extends React.Component {
   render() {
     return (
-      <div>
+      <div style={{ padding: "2em" }}>
         <ForkMeOnGithub
-          repo="https://github.com/whatthefoo/fork-me-on-github"
+          repo="https://github.com/lucas-kohorst/GeoTrendBot"
           colorBackground="white"
           colorOctocat="black"
           side="right"
