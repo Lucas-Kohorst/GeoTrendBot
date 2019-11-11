@@ -4,8 +4,13 @@ import {
   TileLayer,
   Marker,
   Popup,
-  CircleMarker
+  LayersControl,
+  withLeaflet, 
+  LayerGroup
 } from "react-leaflet";
+import { ReactLeafletSearch } from "react-leaflet-search";
+
+const WrappedSearch = withLeaflet(ReactLeafletSearch);
 
 class MapElement extends React.Component {
   constructor(props) {
@@ -16,20 +21,26 @@ class MapElement extends React.Component {
 
     this.state = {
       search: value,
-      positions: []
+      positions: [],
+      streetView: null,
+      tweet: "",
+      name: "",
+      timestamp: "",
+      source: "",
+      hashtag: props.hashtag ? props.hashtag : props.match.params.hashtag
     };
   }
 
   componentDidMount() {
-    this._callSearchAPI().then(res => {
+    this._callSearchAPI().then(async res => {
       for (var i = 0; i < res.tweets.length; i++) {
         if (res.tweets[i].user.location != "") {
-          var tweet = res.tweets[i].text;
-          var name = res.tweets[i].user.screen_name;
-          var timestamp = res.tweets[i].created_at;
-          // Removing the +mili from the timestamp
-          timestamp = timestamp.split("+")[0];
-          fetch(
+          this.setState({
+            tweet: res.tweets[i].text,
+            name: res.tweets[i].user.name,
+            timestamp: res.tweets[i].created_at.split("+")[0] // removing the +milli
+          });
+          await fetch(
             "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
               res.tweets[i].user.location +
               ".json?access_token=pk.eyJ1IjoibHVjYXNrb2hvcnN0IiwiYSI6ImNrMmc4ZzR1ajBzYmgzam1vbzBscHo1ajIifQ.mRP73FdC3Fhwe6QShpZhQw"
@@ -44,6 +55,10 @@ class MapElement extends React.Component {
               try {
                 var long = data.features[0].geometry.coordinates[0];
                 var lat = data.features[0].geometry.coordinates[1];
+                var name = this.state.name;
+                var tweet = this.state.tweet;
+                var timestamp = this.state.timestamp;
+                var source = this.state.source;
                 this.setState(prevState => ({
                   positions: [
                     ...prevState.positions,
@@ -52,7 +67,8 @@ class MapElement extends React.Component {
                       long: long,
                       name: name,
                       tweet: tweet,
-                      timestamp: timestamp
+                      timestamp: timestamp,
+                      source: source
                     }
                   ]
                 }));
@@ -65,7 +81,7 @@ class MapElement extends React.Component {
   }
 
   _callSearchAPI = async () => {
-    const response = await fetch("/search/teamtrees");
+    const response = await fetch("/search/" + this.state.hashtag);
     const body = await response.json();
 
     if (response.status !== 200) {
@@ -79,15 +95,13 @@ class MapElement extends React.Component {
     let markers = [];
     for (var i = 0; i < positions.length; i++) {
       markers.push(
-        <Marker
-          position={[positions[i].lat, positions[i].long]}
-          // radius={8}
-          key={i}
-        >
+        <Marker position={[positions[i].lat, positions[i].long]} key={i}>
           <Popup>
             <h1>{positions[i].name}</h1>
             <h3>{positions[i].timestamp}</h3>
-            <h2>{positions[i].tweet}</h2>
+            <a href={positions[i].source} target="_blank">
+              <h2>{positions[i].tweet}</h2>
+            </a>
           </Popup>
         </Marker>
       );
@@ -97,24 +111,50 @@ class MapElement extends React.Component {
 
   render() {
     return (
-      <LeafletMap
-        center={[50, 10]}
-        zoom={3}
-        maxZoom={10}
-        attributionControl={true}
-        zoomControl={true}
-        doubleClickZoom={true}
-        scrollWheelZoom={true}
-        dragging={true}
-        animate={true}
-        easeLinearity={0.35}
-      >
-        <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {this._createMarkers(this.state.positions)}
-      </LeafletMap>
+      <div>
+        <LeafletMap
+          className="sidebar-map"
+          center={[50, 10]}
+          zoom={3}
+          maxZoom={10}
+          attributionControl={true}
+          zoomControl={true}
+          doubleClickZoom={true}
+          scrollWheelZoom={true}
+          dragging={true}
+          animate={true}
+          easeLinearity={0.35}
+        >
+          <WrappedSearch
+            position="topright"
+            zoom={10}
+            openSearchOnLoad={true}
+            showMarker={false}
+            showPopup={false}
+            inputPlaceholder={"Search Latitude, Longitude"}
+            closeResultsOnClick={true}
+          />
+          <LayersControl position="bottomleft">
+              <LayersControl.BaseLayer name="OpenStreetMap.BlackAndWhite">
+                <TileLayer
+                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
+                />
+              </LayersControl.BaseLayer>
+              <LayersControl.BaseLayer name="OpenStreetMap.Mapnik" checked>
+                <TileLayer
+                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+              </LayersControl.BaseLayer>
+          </LayersControl>
+          <TileLayer
+            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors | Fork me on <a href="https://github.com/Lucas-Kohorst/GeoTrendBot">Github</a>'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {this._createMarkers(this.state.positions)}
+        </LeafletMap>
+      </div>
     );
   }
 }

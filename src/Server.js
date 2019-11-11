@@ -4,10 +4,6 @@ var express = require("express");
 var app = express();
 
 // Routes
-app.get("/", function(req, res) {
-    res.send("Hello World!");
-});
-
 app.get("/user/:name", function(req, res) {
     console.log(new Date() + " [REQUEST] Username: " + req.params.search)
     twitter.user(req.params.name).then(async function(value) {
