@@ -24,6 +24,24 @@ function mentions() {
 }
 
 /**
+ * Get a random trend from a random place
+ */
+function trends() {
+    return new Promise((resolve, reject) => {
+        var params = {
+            id: 1
+        };
+        client.get("trends/place", params, function(error, tweets, response) {
+            if (!error) {
+                resolve(tweets);
+            } else {
+                reject(error);
+            }
+        });
+    });
+}
+
+/**
  * Searches the given hashtag and returns results
  * with the Twitter API
  */
@@ -66,3 +84,4 @@ function user(name) {
 module.exports.mentions = mentions;
 module.exports.user = user;
 module.exports.search = search;
+module.exports.trends = trends;
