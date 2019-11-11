@@ -20,7 +20,12 @@ class Home extends React.Component {
         />
         <h1>GeoTrendBot</h1>
         <p>Visualize trends on Twitter</p>
-        <img src={require("./map.png")} alt="Example Map" height={400} style={{ padding: "2em" }}/>
+        <img
+          src={require("./map.png")}
+          alt="Example Map"
+          height={400}
+          style={{ padding: "2em" }}
+        />
         <div className="centerContent">
           <div className="selfCenter standardWidth">
             <TwitterTimelineEmbed

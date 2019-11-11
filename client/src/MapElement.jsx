@@ -5,8 +5,7 @@ import {
   Marker,
   Popup,
   LayersControl,
-  withLeaflet, 
-  LayerGroup
+  withLeaflet
 } from "react-leaflet";
 import { ReactLeafletSearch } from "react-leaflet-search";
 
@@ -135,18 +134,18 @@ class MapElement extends React.Component {
             closeResultsOnClick={true}
           />
           <LayersControl position="bottomleft">
-              <LayersControl.BaseLayer name="OpenStreetMap.BlackAndWhite">
-                <TileLayer
-                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
-                />
-              </LayersControl.BaseLayer>
-              <LayersControl.BaseLayer name="OpenStreetMap.Mapnik" checked>
-                <TileLayer
-                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-              </LayersControl.BaseLayer>
+            <LayersControl.BaseLayer name="OpenStreetMap.BlackAndWhite">
+              <TileLayer
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
+              />
+            </LayersControl.BaseLayer>
+            <LayersControl.BaseLayer name="OpenStreetMap.Mapnik" checked>
+              <TileLayer
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+            </LayersControl.BaseLayer>
           </LayersControl>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors | Fork me on <a href="https://github.com/Lucas-Kohorst/GeoTrendBot">Github</a>'

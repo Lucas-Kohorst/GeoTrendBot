@@ -6,8 +6,8 @@ function formatDate(date) {
 }
 
 function getDate(previousDate) {
-    var date = moment(previousDate).subtract(1, 'days')
-    return formatDate(date)
+    var date = moment(previousDate).subtract(1, "days");
+    return formatDate(date);
 }
 
 module.exports.formatDate = formatDate;

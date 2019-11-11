@@ -1,11 +1,12 @@
 const twitter = require("./twitterAPI");
-var dateHelper = require("./DateHelper")
+var dateHelper = require("./DateHelper");
 var express = require("express");
+var path = require("path");
 var app = express();
 
 // Routes
 app.get("/user/:name", function(req, res) {
-    console.log(new Date() + " [REQUEST] Username: " + req.params.search)
+    console.log(new Date() + " [REQUEST] Username: " + req.params.search);
     twitter.user(req.params.name).then(async function(value) {
         res.send(value);
         console.log(new Date() + " [REQUEST] Served");
@@ -27,14 +28,22 @@ app.get("/search/:hashtag/", function(req, res) {
             ...values[2].statuses,
             ...values[3].statuses,
             ...values[4].statuses,
-            ...values[5].statuses,
+            ...values[5].statuses
         ];
-        res.send({ "tweets": tweetsArray });
+        res.send({ tweets: tweetsArray });
         console.log(new Date() + " [REQUEST] Served");
-    })
+    });
 });
 
-var port = 5000;
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'))
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+    })
+}
+
+const port = process.env.PORT || 5000;
+
 var server = app.listen(port, function() {
     console.log("App is listening on: http://localhost:" + port);
 });
@@ -44,10 +53,10 @@ function searchTweets(q, date) {
         twitter
             .search(q, dateHelper.formatDate(date))
             .then(async function(value) {
-                resolve(value)
+                resolve(value);
             })
             .catch(error => {
                 console.log(new Date() + " [Error] Username: " + error);
             });
-    })
+    });
 }

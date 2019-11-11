@@ -1,89 +1,26 @@
 {
     "name": "GeoTrendBot",
-    "version": "0.1.0",
-    "private": true,
-    "description": "View trends on twitter on a map. Mention (@) geotrendbot on Twitter with a hashtag and get a link of a map with hotspot analysis of tweets that contain the hashtag. ",
-    "homepage": "https://lucas-kohorst.github.io/GeoTrendBot",
-    "engines": {
-        "node": "12.13.0",
-        "npm": "6.x"
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "server": "node index.js",
+        "client": "npm start --prefix client",
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Lucas-Kohorst/GeoTrendBot"
-    },
-    "keywords": [
-        "gis",
-        "twitter-bot",
-        "react",
-        "trends"
-    ],
-    "author": {
-        "name": "Lucas Kohorst",
-        "email": "kohorstlucas@gmail.com",
-        "url": "kohorstlucas.com"
-    },
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Lucas-Kohorst/GeoTrendBot/issues"
-    },
-    "readme": "https://github.com/Lucas-Kohorst/GeoTrendBot#readme",
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
     "dependencies": {
         "babel-polyfill": "^6.26.0",
-        "fork-me-on-github": "^1.0.6",
-        "geo-tools": "^0.1.2",
-        "geocode": "0.0.3",
-        "gh-pages": "^2.1.1",
-        "leaflet": "^1.5.1",
-        "merge": "^1.2.1",
+        "concurrently": "^5.0.0",
+        "express": "^4.17.1",
         "moment": "^2.24.0",
-        "opencage-api-client": "^0.5.0",
-        "react": "^16.11.0",
-        "react-dom": "^16.11.0",
-        "react-geocode": "^0.2.1",
-        "react-icons": "^3.8.0",
-        "react-iframe": "^1.8.0",
-        "react-leaflet": "^2.5.0",
-        "react-leaflet-dialog": "^2.0.1",
-        "react-leaflet-div-icon": "^1.1.0",
-        "react-leaflet-fullscreen-control": "0.0.4",
-        "react-leaflet-grouped-layer-control": "0.0.13",
-        "react-leaflet-search": "^0.6.0",
-        "react-leaflet-sidebarv2": "^0.6.0",
-        "react-leaflet-sidetabs": "^1.0.1",
-        "react-leaflet-street-view": "^1.0.8",
-        "react-leaflet-zoom-indicator": "^0.1.2",
-        "react-map-fullscreen": "^1.5.0",
+        "path": "^0.12.7",
         "react-router-dom": "^5.1.2",
-        "react-scripts": "3.2.0",
-        "react-twitter-embed": "^3.0.3",
         "scrape-twitter": "^0.11.1",
-        "timesolver": "^1.2.0",
-        "twitter": "^1.7.1",
-        "yarn": "^1.19.1"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "server": "nodemon code/Server.js",
-        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "proxy": "http://localhost:5000/"
+        "twitter": "^1.7.1"
+    }
 }
