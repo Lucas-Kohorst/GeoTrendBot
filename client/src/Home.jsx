@@ -9,6 +9,26 @@ import ForkMeOnGithub from "fork-me-on-github";
 import "./App.css";
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      trends: []
+    };
+  }
+
+  async componentDidMount() {
+    let trends = [];
+    const response = await fetch("/trends/");
+    const body = await response.json();
+    console.log(body);
+    for (var i = 0; i < 10; i++) {
+      trends.push(body[0].trends[i]);
+    }
+    this.setState({
+      trends: trends
+    });
+  }
+
   render() {
     return (
       <div style={{ padding: "2em" }}>
@@ -20,12 +40,14 @@ class Home extends React.Component {
         />
         <h1>GeoTrendBot</h1>
         <p>Visualize trends on Twitter</p>
-        <img
-          src={require("./map.png")}
-          alt="Example Map"
-          height={400}
-          style={{ padding: "2em" }}
-        />
+        <h3>Popular Trends</h3>
+        {this.state.trends.map(trend => (
+          <div>
+            <a href={"https://geotrendbot.herokuapp.com/" + trend.name}>
+              {trend.name}
+            </a>
+          </div>
+        ))}
         <div className="centerContent">
           <div className="selfCenter standardWidth">
             <TwitterTimelineEmbed

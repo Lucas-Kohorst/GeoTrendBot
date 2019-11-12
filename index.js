@@ -5,11 +5,13 @@ var path = require("path");
 var app = express();
 
 // Routes
-app.get("/user/:name", function(req, res) {
-    console.log(new Date() + " [REQUEST] Username: " + req.params.search);
-    twitter.user(req.params.name).then(async function(value) {
+app.get("/trends/", function(req, res) {
+    console.log(new Date() + " [REQUEST] Trends");
+    twitter.trends().then(function(value) {
         res.send(value);
         console.log(new Date() + " [REQUEST] Served");
+    }).catch(err => {
+        res.send(err)
     });
 });
 
