@@ -1,5 +1,5 @@
 var Twit = require("twit");
-const twitter = require("../twitterAPI");
+const twitter = require("./twitterAPI");
 
 console.log("The bot is starting");
 
@@ -17,7 +17,6 @@ var stream = T.stream("statuses/filter", {
 stream.on("tweet", tweetEvent);
 
 function tweetEvent(tweet) {
-    console.log("Hello")
     var reply_to = tweet.in_reply_to_screen_name;
     var text = tweet.text;
     var from = tweet.user.screen_name;
@@ -25,7 +24,7 @@ function tweetEvent(tweet) {
     // params just to see what is going on with the tweets
     var params = { reply_to, text, from, nameID };
 
-    if (reply_to === "GeoTrendBot" && from != "GeoTrendBot") {
+    if (reply_to.toLowerCase() === "geotrendbot" && from.toLowerCase() != "geotrendbot") {
         var base_url = "https://geotrendbot.herokuapp.com/";
         // If  there is a hashtag in the tweet
         if (params.text.search("#") != -1) {
