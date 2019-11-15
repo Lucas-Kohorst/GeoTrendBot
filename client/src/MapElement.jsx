@@ -156,7 +156,7 @@ class MapElement extends React.Component {
             closeResultsOnClick={true}
           />
           <LayersControl position={"bottomleft"}>
-            <LayersControl.BaseLayer name="Mapnik" checked>
+            <LayersControl.BaseLayer name="Mapnik">
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution="&copy; <a href=http://osm.org/copyright>OpenStreetMap</a> contributors"
@@ -168,7 +168,7 @@ class MapElement extends React.Component {
                 attribution="&copy; <a href=http://osm.org/copyright>OpenStreetMap</a> contributors"
               />
             </LayersControl.BaseLayer>
-            <LayersControl.BaseLayer name="Thunder Dark">
+            <LayersControl.BaseLayer name="Thunder Dark" checked>
               <TileLayer
                 url="https://tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey=271bf3a0f63848d49a770806ac397322"
                 attribution="&copy; <a href=http://osm.org/copyright>OpenStreetMap</a> contributors"
