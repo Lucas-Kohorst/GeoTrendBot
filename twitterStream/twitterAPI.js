@@ -29,7 +29,7 @@ function mentions() {
 function trends() {
     return new Promise((resolve, reject) => {
         var params = {
-            id: 1
+            id: 2459115
         };
         client.get("trends/place", params, function(error, tweets, response) {
             if (!error) {

@@ -7,6 +7,7 @@ import {
 } from "react-twitter-embed";
 import ForkMeOnGithub from "fork-me-on-github";
 import "./App.css";
+import { ENGINE_METHOD_DIGESTS } from "constants";
 
 class Home extends React.Component {
   constructor(props) {
@@ -29,6 +30,13 @@ class Home extends React.Component {
     });
   }
 
+  _getURL = (name) => {
+    var baseURL = "https://geotrendbot.herokuapp.com/"
+    var nameURL = JSON.stringify(name).split("#")[1] ? JSON.stringify(name).split("#")[1] : name
+    var url = baseURL + nameURL
+    return url
+  }
+
   render() {
     return (
       <div style={{ padding: "2em" }}>
@@ -44,10 +52,7 @@ class Home extends React.Component {
         {this.state.trends.map(trend => (
           <div>
             <a
-              href={
-                "https://geotrendbot.herokuapp.com/" +
-                JSON.stringify(trend.name).split("#")[1]
-              }
+              href={this._getURL(trend.name)}
             >
               {trend.name}
             </a>
