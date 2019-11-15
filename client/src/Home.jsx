@@ -43,7 +43,12 @@ class Home extends React.Component {
         <h3>Popular Trends</h3>
         {this.state.trends.map(trend => (
           <div>
-            <a href={"https://geotrendbot.herokuapp.com/" + trend.name}>
+            <a
+              href={
+                "https://geotrendbot.herokuapp.com/" +
+                JSON.stringify(trend.name).split("#")[1]
+              }
+            >
               {trend.name}
             </a>
           </div>
