@@ -106,3 +106,5 @@ Feel free to fork, open pull requests and contribute to this project
 ## Contact
 [@KohorstLucas](https://twitter.com/KohoestLucas)<br />
 [kohorstlucas@gmail.com](mailto:kohorstlucas@gmail.com)
+
+<a href="https://www.producthunt.com/posts/geotrendbot?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-geotrendbot" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=176828&theme=light" alt="GeoTrendBot - Visualize trends on Twitter @GeoTrendBot | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
