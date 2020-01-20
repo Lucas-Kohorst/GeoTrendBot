@@ -9,6 +9,8 @@ Visualize trends on Twitter by navigating to [GeoTrendBot](https://geotrendbot.h
 
 ---
 
+## [Depreceated] The Twitter Developer account for this project has been suspended (Not sure why) but you can continue to build and improve the product if you wish
+
 ## Features
 - Tweet at the bot receive a link to a Heat Map of tweets from the past 7 days
 - View popular trends
