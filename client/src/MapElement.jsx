@@ -49,7 +49,7 @@ class MapElement extends React.Component {
           await fetch(
             "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
               res.tweets[i].user.location +
-              ".json?access_token=pk.eyJ1IjoibHVjYXNrb2hvcnN0IiwiYSI6ImNrMmc4ZzR1ajBzYmgzam1vbzBscHo1ajIifQ.mRP73FdC3Fhwe6QShpZhQw"
+              ".json?access_token=API_TOKEN"
           )
             .then(response => {
               if (!response.ok) {
